@@ -147,12 +147,21 @@ void Sudoku::solve()
 //			(i+1)%9!=0 ? cout<< a[i] << " " : cout<<a[i]<<endl;
 //	cout<<"------------------------------"<<endl;
 	}
-	if(sum==0)
-		printf("0\n");
-	if (sum>1)
-		printf("2\n");
-	if(sum==1)
-		printOut(true);
+	if(totalSp!=0)
+	{
+		if(sum==0)
+			printf("0\n");
+		if (sum>1)
+			printf("2\n");
+		if(sum==1)
+			printOut(true);
+	}
+	if(totalSp==0)
+	{
+		cout<<"1"<<endl;
+		for(i=0;i<sudokusize;i++)
+			(i+1)%9!=0 ? cout<< map[i] << " " : cout<<map[i]<<endl;
+	}
 }
 
 int Sudoku::nextBlank(int np)

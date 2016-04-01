@@ -223,7 +223,7 @@ int Sudoku::checkBlock(int np)
 				for(i=6;i<9;i++)
 					if( ( a[np]==a[i+9*j] ) && ( np!=(i+9*j) ) )
 						return 1;
-				return 0;
+			return 0;
 		}
 	}
 	if( ( 3 <= np/9 ) && ( np/9 < 6 ) )
@@ -300,10 +300,7 @@ void Sudoku::changeNum(int a,int b)
 void Sudoku::changeRow(int a,int b)
 {
 	if( ( 2 < a ) || ( 2 < b ) || ( a < 0 ) || ( b < 0 ) )
-	{
-		cout << "a,b must be in the interval(0,2)."<<endl;
 		return ;
-	}
 	int tmp;
 	for(i=0;i<27;i++)
 	{
@@ -316,10 +313,7 @@ void Sudoku::changeRow(int a,int b)
 void Sudoku::changeCol(int a,int b)
 {
 	if( ( 2 < a ) || ( 2 < b ) || ( a < 0 ) || ( b < 0 ) )
-	{
-		cout << "a,b must be in the interval(0,2)."<<endl;
 		return ;
-	}
 	int tmp;
 	for(i=0;i<3;i++)
 		for(j=0;j<9;j++)
@@ -333,10 +327,7 @@ void Sudoku::changeCol(int a,int b)
 void Sudoku::rotate(int n)  
 {
 	if( ( n > 100 ) || ( n < 0 ) )
-	{
-		cout << "n must be in the interval [0,100]."<<endl;
 		return ;
-	}
 	if( n%4 == 0 )
 		n = 0;
 	if( n%4 == 1)
@@ -372,10 +363,7 @@ void Sudoku::flip(int n)
 {
 	int tmp;
 	if( ( n != 0) && ( n != 1 ) )
-	{
-		cout << "n must be 0 or 1."<<endl;
 		return ;
-	}
 	if( n == 0 )
 	{
 		for(i=0;i<9;i++)

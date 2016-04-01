@@ -12,6 +12,7 @@ int h;
 int t = -1;
 int sp[81];
 int np=0;
+int totalSp=0;
 
 Sudoku::Sudoku()
 {
@@ -113,9 +114,12 @@ void Sudoku::solve()
 	np = nextBlank(0);
 	push(np);
 	int sum=0,f=0;
-
+	for(i=0;i<sudokusize;i++)
+		if(map[i]==0)
+			totalSp++;
 	while( sum < 2 )
 	{
+		cout<<t<<endl;
 		if( f!=0 )
 		{
 			if( a[sp[0]] == 0 )
@@ -132,7 +136,7 @@ void Sudoku::solve()
 		else
 			if( checkBlank(np) == 0 )
 			{
-			 	if(f==0)
+			 	if( ( f==0 ) && ( t != (totalSp) ) )
 				{
 					np = nextBlank(np);
 					push(np);
@@ -142,7 +146,7 @@ void Sudoku::solve()
 					t++;
 					np = sp[t];
 				}
-				if( np == sudokusize-1 )
+				if( t == totalSp )
 				{
 					sum ++;
 					np = sp[0];
@@ -157,6 +161,7 @@ void Sudoku::solve()
 	//	for(i=0;i<sudokusize;i++)
 	//		(i+1)%9!=0 ? cout<< a[i] << " " : cout<<a[i]<<endl;
 	}
+	cout<<totalSp<<endl;
 	if(sum==0)
 		printf("0\n");
 	if (sum>1)
@@ -167,7 +172,7 @@ void Sudoku::solve()
 
 int Sudoku::nextBlank(int np)
 {
-	while( np<sudokusize-1 && a[np]!=0)
+	while( np<sudokusize && a[np]!=0)
 		np++;
 	return np;
 }

@@ -113,12 +113,15 @@ void Sudoku::solve()
 		a[i] = map[i];
 	np = nextBlank(0);
 	push(np);
-	int sum=0,f=0;
+	int sum=0;
+	int q=0;
 	for(i=0;i<sudokusize;i++)
 		if(map[i]==0)
 			totalSp++;
 	while( sum < 2 )
 	{
+		if(t==-1)
+			break;
 		a[np]++;
 		if( a[np] > 9 )
 		{
@@ -140,8 +143,9 @@ void Sudoku::solve()
 						ans[i] = a[i];
 				}
 			}
-	//	for(i=0;i<sudokusize;i++)
-	//		(i+1)%9!=0 ? cout<< a[i] << " " : cout<<a[i]<<endl;
+//	for(i=0;i<sudokusize;i++)
+//			(i+1)%9!=0 ? cout<< a[i] << " " : cout<<a[i]<<endl;
+//	cout<<"------------------------------"<<endl;
 	}
 	if(sum==0)
 		printf("0\n");

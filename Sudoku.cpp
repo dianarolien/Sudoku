@@ -401,7 +401,6 @@ void Sudoku::flip(int n)
 
 void Sudoku::transform()
 {
-	readIn();
 	change();
 	printOut(false);
 }
@@ -418,7 +417,6 @@ void Sudoku::change()
 
 void Sudoku::printOut(bool isAns)
 {
-	int i;
 	if(!isAns)
 		for(i=0;i<sudokusize;i++)
 			printf("%d%c",map[i],(i+1)%9==0?'\n':' ');

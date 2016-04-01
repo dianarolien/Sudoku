@@ -119,48 +119,30 @@ void Sudoku::solve()
 			totalSp++;
 	while( sum < 2 )
 	{
-		if( f!=0 )
-		{
-			if( a[sp[0]] == 0 )
-				a[sp[0]] = f;
-		}
 		a[np]++;
 		if( a[np] > 9 )
 		{
-			if( np == sp[0] )
-				break;
 			a[np] = 0;
 			np = previousBlank();
 		}
 		else
 			if( checkBlank(np) == 0 )
 			{
-			 	if( ( f==0 ) && ( t != (totalSp) ) )
+			 	if( t != totalSp )
 				{
 					np = nextBlank(np);
 					push(np);
 				}
-				if(f!=0)
-				{	
-					t++;
-					np = sp[t];
-				}
 				if( t == totalSp )
 				{
 					sum ++;
-					np = sp[0];
-					t=0;
 					for(i=0;i<sudokusize;i++)
 						ans[i] = a[i];
-					f = a[sp[0]];
-					for(i=0;i<sudokusize;i++)
-						a[i] = map[i];
 				}
 			}
 	//	for(i=0;i<sudokusize;i++)
 	//		(i+1)%9!=0 ? cout<< a[i] << " " : cout<<a[i]<<endl;
 	}
-	cout<<totalSp<<endl;
 	if(sum==0)
 		printf("0\n");
 	if (sum>1)

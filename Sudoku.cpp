@@ -119,7 +119,6 @@ void Sudoku::solve()
 			totalSp++;
 	while( sum < 2 )
 	{
-		cout<<t<<endl;
 		if( f!=0 )
 		{
 			if( a[sp[0]] == 0 )

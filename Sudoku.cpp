@@ -342,7 +342,9 @@ void Sudoku::rotate(int n)
 	if( ( n > 100 ) || ( n < 0 ) )
 		return ;
 	if( n%4 == 0 )
-		n = 0;
+	{	n = 0;
+		return;
+	}
 	if( n%4 == 1)
 		n = 1;
 	if( n%4 == 2 )
@@ -350,7 +352,7 @@ void Sudoku::rotate(int n)
 	if( n%4 == 3 )
 		n = 3;
 	int t[sudokusize] ;
-	for(k=0;k<n;k++)
+	/*for(k=0;k<n;k++)
 	{
 		for(i=0;i<sudokusize;i++)
 			t[i] = map[i];
@@ -368,6 +370,47 @@ void Sudoku::rotate(int n)
 			map[44-i] = t[4+9*i];
 			map[76-9*i] = t[44-i];
 			map[36+i] = t[76-9*i];
+		}
+	}*/
+		for(i=0;i<sudokusize;i++)
+			t[i] = map[i];
+	if(n==1)
+	{
+		for(i=0;i<4;i++)
+			for(j=0;j<4;j++)
+			{
+				map[i+9*j] = t[72+j-9*i];
+				map[8+9*i-j] = t[i+9*j];
+				map[80-9*j-i] = t[8+9*i-j];
+				map[72+j-9*i] = t[80-9*j-i];		
+			}
+		for(i=0;i<4;i++)
+		{
+			map[4+9*i] = t[36+i];
+			map[44-i] = t[4+9*i];
+			map[76-9*i] = t[44-i];
+			map[36+i] = t[76-9*i];
+		}
+	}
+	if(n==2)
+		for(i=0;i<sudokusize;i++)
+			map[i]=t[sudokusize-1-i];
+	if(n==3)
+	{
+		for(i=0;i<4;i++)
+			for(j=0;j<4;j++)
+			{
+				map[i+9*j]=t[8+9*i-j];
+				map[8+9*i-j]=t[80-9*j-i];
+				map[80-9*j-i]=t[72+j-9*i];
+				map[72+j-9*i]=t[i+9*j];
+			}
+		for(i=0;i<4;i++)
+		{
+			map[4+9*i]=t[44-i];
+			map[44-i]=t[76-9*i];
+			map[76-9*i]=t[36+i];
+			map[36+i]=t[4+9*i];		
 		}
 	}
 }

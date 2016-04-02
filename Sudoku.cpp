@@ -371,7 +371,7 @@ void Sudoku::rotate(int n)
 			map[i]=t[sudokusize-1-i];
 		return ;
 	}
-	if( n%3 == 3 )
+	if( n%4 == 3 )
 	{
 		for(i=0;i<4;i++)
 			for(j=0;j<4;j++)
